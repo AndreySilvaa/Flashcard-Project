@@ -1,0 +1,158 @@
+*{box-sizing: border-box;}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+#container{
+    width: 80%;
+    margin: auto;
+}
+
+#add{
+    background-color: rgba(240, 248, 255, 0);
+    border: 1px solid #FF8552;
+    color: #FF8552;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#add:hover{
+    background-color: #FF8552;
+    color: black;
+}
+
+#createcard{
+    border: 1px solid #FF8552;
+    max-width: 500px;
+    border-radius: 5px;
+    position: relative;
+    margin-top: 20px;
+}
+
+#close{
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    font-size: 30px;
+    color: #FF8552;
+    cursor: pointer;
+}
+
+#close:hover{
+    color: #297373;
+}
+
+.dvinput{
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+}
+
+.dvinput label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+textarea{
+    border: 1px solid #FF8552;
+    border-radius: 5px;
+    font-size: 17px;
+}
+
+#save{
+    margin: 0px 0px 30px 30px;
+    padding: 7px 80px;
+    font-size: 17px;
+    background-color: aliceblue;
+    border: 2px solid #297373;
+    border-radius: 4px;
+    color: #297373;
+    cursor: pointer;
+}
+
+#save:hover{
+    background-color: #297373;
+    color: white;
+}
+
+#cards{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card{
+    margin: 15px;
+    width: 300px;
+    height: fit-content;
+    border: 1px solid #00000073;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.card h2{
+    margin-top: 0px;
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.801);
+}
+
+.card span{
+    font-size: 18px;
+    color: rgb(0, 131, 238);
+    cursor: pointer;
+}
+
+.card span:hover{
+    text-decoration: underline;
+    color: rgb(0, 110, 201);
+}
+
+.card p{
+    font-size: 22px;
+    font-weight: 600;
+    color: #2d2d2d;
+}
+
+.bts{
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit{
+    padding: 10px;
+    border: 2px solid #297373;
+    color: #297373;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.edit:hover{
+    background-color: #297373;
+    color: #2d2d2d;
+}
+
+.delete{
+    padding: 10px;
+    border: 2px solid #FF8552;
+    color: #FF8552;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.delete:hover{
+    background-color: #FF8552;
+    color: #2d2d2d;
+}
+
+.hidden{
+    display: none;
+}

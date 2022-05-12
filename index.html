@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Project</title>
+    <script src="https://kit.fontawesome.com/698b380f29.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <div>
+            <h1>Flashcard</h1>
+            <button id="add">Add Question</button>
+        </div>
+
+        <div id="createcard" class="hidden">
+            <span id="close"><i class="fas fa-window-close"></i></span>
+            <form action="">
+                <div class="dvinput">
+                    <label for="">Question</label>
+                    <textarea name="" id="questao" cols="40" rows="4"></textarea>
+                </div>
+
+                <div class="dvinput">
+                    <label for="">Answer</label>
+                    <textarea name="" id="resposta" cols="40" rows="4"></textarea>
+                </div>
+
+                <button id="save" type="submit">Save</button>
+            </form>
+        </div>
+
+        <div id="cards">
+            <div class="card">
+                <h2>O que é metafísica?</h2>
+                <span>Show/Hide Answer</span>
+                <p>É uma área da filosofia que busca o conhecimento da essência das coisas.</p>
+                <div class="bts">
+                    <button class="edit">EDIT</button>
+                    <button class="delete">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
