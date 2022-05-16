@@ -8,8 +8,8 @@
     const form = document.getElementById("createcard")
     const close = document.getElementById("close")
     const save = document.getElementById("save")
-
-    let flashcards = []
+    const colors = ["#CED971", "#E19853", "#77BAE4", "#CF5E9E", "#A577B8", "#E1A8C4"]
+    var flashcards = []
 
 
     addbt.addEventListener("click", () =>{
@@ -55,7 +55,11 @@
         let display = new Display()
         flashcards.push(card)
         display.passinfo(flashcards)
-        getlocalstorage(flashcards)
+        let item = [flashcards[flashcards.length-1]]
+        getlocalstorage(item)
+        form.classList.add("hidden")
+        que.innerText = ''
+        re.innerText = ""
     })
 
 
@@ -68,7 +72,40 @@
     function getlocalstorage(cards){
         let dvcards = document.getElementById("cards")
         cards.forEach((card) =>{
-            dvcards.insertAdjacentHTML("beforeend", `<div class="card"><h2>${card.question}</h2><span>Show/Hide Answer</span><p>${card.answer}</p><div class="bts"><button class="edit">EDIT</button><button class="delete">DELETE</button></div></div>`)
+            let cor = colors[Math.round(Math.random()*colors.length-1)]
+            dvcards.insertAdjacentHTML("beforeend", `<div class="card" style="background-color: ${cor};"><h2>${card.question}</h2><span onclick="muda(this)">Show/Hide Answer</span><p class="hidden">${card.answer}</p><div class="bts"><button class="edit">EDIT</button><button class="delete">DELETE</button></div></div>`)
+
+            // BOTÃO DELETE
+            let btdel = document.getElementsByClassName("delete")
+            btdel[btdel.length-1].addEventListener("click", (e) =>{
+                let name = e.currentTarget.parentElement.parentElement.querySelector("h2").innerText
+                e.currentTarget.parentElement.parentElement.remove()
+                flashcards = flashcards.filter((ob) =>{
+                    return ob.question != name
+                })
+                localStorage.setItem("cards", JSON.stringify(flashcards))
+            })
+            
+            // BOTÃO EDIT
+            let btedit = document.getElementsByClassName("edit")
+            btedit[btedit.length-1].addEventListener("click", (e) =>{
+                let pergunta = e.currentTarget.parentElement.parentElement.querySelector("h2").innerText
+                let resposta = e.currentTarget.parentElement.parentElement.querySelector("p").innerText
+
+                e.currentTarget.parentElement.parentElement.remove()
+                flashcards = flashcards.filter((ob) =>{
+                    return ob.question != pergunta
+                })
+                localStorage.setItem("cards", JSON.stringify(flashcards))
+
+                form.classList.remove("hidden")
+                let que = document.getElementById("questao").innerText = pergunta
+                let re = document.getElementById("resposta").innerText = resposta
+            })
         })
     }
 })()
+//SHOW/HIDE
+function muda(e){
+    console.log(e.nextElementSibling.classList.toggle("hidden"))
+}

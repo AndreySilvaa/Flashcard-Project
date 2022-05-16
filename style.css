@@ -3,7 +3,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
+    background-color: #dddddd;
 }
 
 #container{
@@ -105,13 +105,15 @@ textarea{
 
 .card span{
     font-size: 18px;
-    color: rgb(0, 131, 238);
+    color: rgb(255, 255, 255);
     cursor: pointer;
+    text-shadow: 0 0 4px black;
 }
 
 .card span:hover{
     text-decoration: underline;
-    color: rgb(0, 110, 201);
+    color: rgb(0, 0, 0);
+    text-shadow: 0 0 0 #484848;
 }
 
 .card p{
@@ -123,33 +125,34 @@ textarea{
 .bts{
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
 .edit{
     padding: 10px;
-    border: 2px solid #297373;
-    color: #297373;
+    border: 2px solid green;
+    color: rgb(0, 90, 0);
     border-radius: 5px;
     cursor: pointer;
-    background-color: white;
+    background-color: #ffffff00;
 }
 
 .edit:hover{
-    background-color: #297373;
+    background-color: rgb(0, 184, 0);
     color: #2d2d2d;
 }
 
 .delete{
     padding: 10px;
-    border: 2px solid #FF8552;
-    color: #FF8552;
+    border: 2px solid red;
+    color: red;
     border-radius: 5px;
     cursor: pointer;
-    background-color: white;
+    background-color: #ffffff00;
 }
 
 .delete:hover{
-    background-color: #FF8552;
+    background-color: red;
     color: #2d2d2d;
 }
 
