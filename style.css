@@ -34,6 +34,20 @@ body{
     margin-top: 20px;
 }
 
+#feedback{
+    border: 1px solid red;
+    background-color: #ffabab;
+    color: #820000;
+    border-radius: 15px;
+    width: 60%;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    top: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #close{
     position: absolute;
     right: 0;

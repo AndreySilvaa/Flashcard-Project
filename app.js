@@ -9,6 +9,7 @@
     const close = document.getElementById("close")
     const save = document.getElementById("save")
     const colors = ["#CED971", "#E19853", "#77BAE4", "#CF5E9E", "#A577B8", "#E1A8C4"]
+    const feedback = document.getElementById("feedback")
     var flashcards = []
 
 
@@ -52,15 +53,33 @@
         let re = document.getElementById("resposta")
 
         let card = new flashcard(que.value, re.value)
-        let display = new Display()
-        flashcards.push(card)
-        display.passinfo(flashcards)
-        let item = [flashcards[flashcards.length-1]]
-        getlocalstorage(item)
-        form.classList.add("hidden")
+        card.checkinfo()
+        //let display = new Display()
+        //flashcards.push(card)
+        //display.passinfo(flashcards)
+        //let item = [flashcards[flashcards.length-1]]
+        //getlocalstorage(item)
+        //form.classList.add("hidden")
         que.innerText = ''
         re.innerText = ""
     })
+
+    // CHECANDO AS INFORMAÇÕES
+    flashcard.prototype.checkinfo = function(){
+        if(this.answer == "" || this.question == ""){
+            feedback.classList.remove("hidden")
+            setTimeout(() => {
+                feedback.classList.add("hidden")
+            }, 2000)
+        }else{
+            let display = new Display()
+            flashcards.push(this)
+            display.passinfo(flashcards)
+            let item = [flashcards[flashcards.length-1]]
+            getlocalstorage(item)
+            form.classList.add("hidden")
+        }
+    }
 
 
     // PASSANDO AS INFORMAÇÕES PARA O LOCALSTORAGE
