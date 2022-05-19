@@ -99,9 +99,10 @@
             btdel[btdel.length-1].addEventListener("click", (e) =>{
                 let name = e.currentTarget.parentElement.parentElement.querySelector("h2").innerText
                 e.currentTarget.parentElement.parentElement.remove()
-                flashcards = flashcards.filter((ob) =>{
+                let data = flashcards.filter((ob) =>{
                     return ob.question != name
                 })
+                flashcards = data
                 localStorage.setItem("cards", JSON.stringify(flashcards))
             })
             
