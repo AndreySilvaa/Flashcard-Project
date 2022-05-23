@@ -17,7 +17,7 @@
 
         <div id="createcard" class="hidden">
             <span id="close"><i class="fas fa-window-close"></i></span>
-            <form action="">
+            <form id="form" action="">
                 <div id="feedback" class="hidden">Preencha os campos de texto.</div>
                 <div class="dvinput">
                     <label for="questao">Question</label>
@@ -34,17 +34,17 @@
         </div>
 
         <div id="cards">
-            <!--
+            
             <div class="card">
                 <h2>O que é metafísica?</h2>
-                <span onclick="muda(this)">Show/Hide Answer</span>
+                <span>Show/Hide Answer</span>
                 <p class="hidden">É uma área da filosofia que busca o conhecimento da essência das coisas.</p>
                 <div class="bts">
-                    <button class="edit">EDIT</button>
-                    <button class="delete">DELETE</button>
+                    <button class="edit" data-id="0">EDIT</button>
+                    <button class="delete" data-id="0">DELETE</button>
                 </div>
             </div>
-        -->
+        
         </div>
     </div>
 
