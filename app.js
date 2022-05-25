@@ -86,7 +86,7 @@ function inicia(){
     // Construtor da função responsável pela exibição
     function OP(){
         OP.prototype.recolherLocalStorage = function(){
-            let savedlocalstorage = localStorage.getItem("cards")
+            let savedlocalstorage = localStorage.getItem("flashcards")
             if(savedlocalstorage){
                 savedlocalstorage = JSON.parse(savedlocalstorage)
                 return savedlocalstorage
@@ -110,7 +110,7 @@ function inicia(){
 
         OP.prototype.addLocalStorage = function(data){
             localStorage.clear()
-            localStorage.setItem("cards", JSON.stringify(data))
+            localStorage.setItem("flashcards", JSON.stringify(data))
         }
 
         OP.prototype.clearFields = function(q, a){
