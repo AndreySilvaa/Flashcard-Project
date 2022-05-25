@@ -1,11 +1,3 @@
-//Criar o op(objeto principal)
-//Verificar se existe localStorage
-//se existe somar o id do último, se não criar o primeiro id
-//abrir e fechar formulário
-//criar a class, pegar as informações do form e criar um novo objeto
-//passar as informações do novo objeto para o localstorage
-//criar um método para pegar as informações e criar um flashcard
-
 function inicia(){
     const btadd = document.getElementById("add")
     const cardform = document.getElementById("createcard")
@@ -13,6 +5,7 @@ function inicia(){
     const form = document.getElementById("form")
     const feedback = document.getElementById("feedback")
     const dvcards = document.getElementById("cards")
+    const colors = ['#CED971', '#E19853', '#77BAE4', '#CF5E9E', '#A577B8', '#D8AAC1']
 
     let id
 
@@ -25,8 +18,6 @@ function inicia(){
     }else{
         id = 1
     }
-    console.log(data.length)
-    console.log(data)
     data.forEach((item) => {
         op.addCard(item)
     })
@@ -58,10 +49,39 @@ function inicia(){
             data.push(card)
             op.addCard(card)
             op.addLocalStorage(data)
+            op.clearFields()
+            cardform.classList.add("hidden")
         }
     })
 
     //Manipulando o flash-card DELETE/EDIT/SHOW-HIDE
+    dvcards.addEventListener("click", (e) =>{
+        if(e.target.classList.contains("show_hide")){ //SHOW|HIDE
+            e.target.nextElementSibling.classList.toggle("hidden")
+        }
+        if(e.target.classList.contains("delete")){ //BOTÃO DELETE
+            let id = e.target.dataset.id
+            data = data.filter((el) =>{
+                return el.id != id
+            })
+            e.target.parentElement.parentElement.remove()
+            op.addLocalStorage(data)
+        }
+        if(e.target.classList.contains("edit")){ //BOTÃO EDIT
+            let id = e.target.dataset.id
+            let questionedit = data.filter((el) =>{
+                return el.id == id
+            })
+            data = data.filter((el) =>{
+                return el.id != id
+            })
+            e.target.parentElement.parentElement.remove()
+            op.addLocalStorage(data)
+            cardform.classList.remove("hidden")
+            document.getElementById("questao").value = questionedit[0].question
+            document.getElementById("resposta").value = questionedit[0].answer
+        }
+    })
 
     // Construtor da função responsável pela exibição
     function OP(){
@@ -76,7 +96,8 @@ function inicia(){
         }
 
         OP.prototype.addCard = function(item){
-            dvcards.insertAdjacentHTML("beforeend", `<div class="card"><h2>${item.question}</h2><span>Show/Hide Answer</span><p class="hidden">${item.answer}</p><div class="bts"><button class="edit" data-id="${item.id}">EDIT</button><button class="delete" data-id="${item.id}">DELETE</button></div></div>`)
+            let color = colors[Math.floor(Math.random()*colors.length)]
+            dvcards.insertAdjacentHTML("beforeend", `<div style="background-color: ${color};" class="card"><h2>${item.question}</h2><span class="show_hide">Show/Hide Answer</span><p class="hidden">${item.answer}</p><div class="bts"><button class="edit" data-id="${item.id}">EDIT</button><button class="delete" data-id="${item.id}">DELETE</button></div></div>`)
         }
 
         OP.prototype.showCardForm = function(){
@@ -90,6 +111,11 @@ function inicia(){
         OP.prototype.addLocalStorage = function(data){
             localStorage.clear()
             localStorage.setItem("cards", JSON.stringify(data))
+        }
+
+        OP.prototype.clearFields = function(q, a){
+            document.getElementById("questao").value = ''
+            document.getElementById("resposta").value = ''
         }
     }
 
